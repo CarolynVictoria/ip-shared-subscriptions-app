@@ -1,0 +1,51 @@
+{
+	"name": "ip-shared-subscriptions-app",
+	"version": "0.1.0",
+	"private": true,
+	"proxy": "http://localhost:5555",
+	"dependencies": {
+		"@tanstack/react-table": "^8.20.6",
+		"axios": "^1.7.9",
+		"concurrently": "^9.1.2",
+		"cra-template": "1.2.0",
+		"daisyui": "^4.12.23",
+		"mongoose": "^8.9.3",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-scripts": "5.0.1",
+		"web-vitals": "^4.2.4"
+	},
+	"scripts": {
+		"start": "node --no-deprecation node_modules/react-scripts/scripts/start.js --port 3000",
+		"dev": "concurrently --kill-others-on-fail --names \"REACT,BACKEND\" \"npm start\" \"npx nodemon backend/server.js\"",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"start:backend": "node backend/server.js"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"autoprefixer": "^10.4.20",
+		"nodemon": "^3.1.9",
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.17"
+	}
+}
