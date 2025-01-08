@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchSharedSubscriptions } from '../services/api';
 
-const MainContent = () => {
+const MainContent = ({ refreshKey }) => {
 	const [subscriptions, setSubscriptions] = useState([]);
 
 	useEffect(() => {
@@ -15,7 +15,7 @@ const MainContent = () => {
 		};
 
 		loadSubscriptions();
-	}, []);
+	}, [refreshKey]); // Re-run effect whenever refreshKey changes
 
 	return (
 		<div className='p-4'>
@@ -29,12 +29,14 @@ const MainContent = () => {
 						<p>Redeemed Tokens: {sub.redeemed_tokens}</p>
 						<h3 className='mt-2 font-medium'>Shared Accounts:</h3>
 						<ul className='list-disc pl-4'>
-							{sub.shared_accounts.map((account) => (
-								<li key={account.account_id}>
+							{sub.shared_accounts?.map((account, index) => (
+								<li
+									key={account.account_id || `${sub.subscription_id}-${index}`}
+								>
 									<p>{account.email}</p>
-									<p>{account.personal_name || 'N/A'}</p>
+									<p>{account.personal_name || ''}</p>
 								</li>
-							))}
+							)) || <li></li>}
 						</ul>
 					</div>
 				))}

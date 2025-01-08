@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+console.log('HELLO - fetchSharedSubscriptions file is loaded');
+
 const API_URL = 'http://localhost:5555/api/shared-subscriptions';
 
 export const fetchSharedSubscriptions = async () => {
